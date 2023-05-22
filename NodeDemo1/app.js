@@ -27,3 +27,10 @@ var n1 = "Ngoc Linh"
 var n2 = "Ha noi"
 var max2 = soSanh(n1,n2)
 console.log(max2)
+
+var studentName = "Tran;Thu;Do";
+var nameParts = studentName.split(";");
+console.log(nameParts);
+var ho = nameParts[0];
+var tenDem = nameParts[1];
+var ten = nameParts[2];
