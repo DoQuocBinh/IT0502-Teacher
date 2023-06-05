@@ -1,0 +1,11 @@
+.redText {
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.myBorder {
+    border-style: double;
+    border-color: purple;
+    border-width: 5px;
+}
