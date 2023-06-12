@@ -3,13 +3,23 @@ const app = express()
 
 app.set('view engine','hbs')
 
-const dsSV = [
+var dsSV = [
         {id:1, name : "Linh", age : 20, phone : '0901223333'},
         {id:2, name : "Long", age : 23,phone : '0933533556'}
     ]
 
 app.get('/',(req,res)=>{
     res.render('home',{danhSach : dsSV})
+})
+
+app.get('/delete/:id',(req,res)=>{
+    let studentId = req.params.id
+    let index = dsSV.findIndex(item => item.id ==studentId)
+    console.log(index)
+    if(index !=-1){
+        dsSV = dsSV.slice(index,1)      
+    }
+    res.redirect('/')
 })
 
 app.get('/student/:id',(req,res)=>{
