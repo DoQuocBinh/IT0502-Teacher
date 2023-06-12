@@ -7,7 +7,7 @@ const dsSV = [
         {id:1, name : "Linh", age : 20, phone : '0901223333'},
         {id:2, name : "Long", age : 23,phone : '0933533556'}
     ]
-'1'
+
 app.get('/',(req,res)=>{
     res.render('home',{danhSach : dsSV})
 })
