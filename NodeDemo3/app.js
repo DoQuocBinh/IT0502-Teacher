@@ -4,12 +4,20 @@ const app = express()
 app.set('view engine','hbs')
 
 var dsSV = [
-        {id:100, name : "Linh", age : 20, phone : '0901223333'}, //index 0
-        {id:200, name : "Long", age : 23,phone : '0933533556'}, //index 1
-        {id:700, name : "Truong", age : 20,phone : '0933533557'}, //index 2
-        {id:400, name : "Minh", age : 19,phone : '0933533556'} // index 3
+        {id:100, name : "Linh", age : 20, phone : '0901223333'},
+        {id:200, name : "Long", age : 23,phone : '0933533556'}, 
+        {id:700, name : "Truong", age : 20,phone : '0933533557'},
+        {id:400, name : "Minh", age : 19,phone : '0933533556'} 
     ]
-// a , b ,x ,c ,d
+
+app.use(express.urlencoded({extended:true}))
+
+app.post('/search',(req,res)=>{
+    const name = req.body.searchName
+    const results = dsSV.filter(e => e.name.includes(name))
+    res.render('home',{danhSach : results})
+})
+
 app.get('/',(req,res)=>{
     res.render('home',{danhSach : dsSV})
 })
@@ -27,7 +35,7 @@ app.get('/delete/:id',(req,res)=>{
 app.get('/student/:id',(req,res)=>{
     let studentId = req.params.id
     let student = dsSV.find(item => item.id ==studentId)
-    if(student){
+    if(student){//neu tim thay trong danh sach
         res.render('student',{'student':student})
     }else{
         res.send('Not found!')

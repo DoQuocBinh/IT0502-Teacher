@@ -11,7 +11,7 @@
     <title>Home</title>
 </head>
 
-<body>
+<body  style="background-color: rgb(199, 164, 118);">
     <h1>Home page</h1>
     <table class="table table-bordered">
         <thead>
@@ -23,6 +23,11 @@
             </tr>
         </thead>
         <tbody>
+            <form method="post" action="/search">
+                <input type= "text" name="searchName"/>
+                <input type="submit" value="Search">
+            </form>
+            
             {{#each danhSach}}
             <tr>
                 <td><a href="/student/{{id}}">{{id}}</a></td>
@@ -32,6 +37,7 @@
             </tr>
             {{/each}}
         </tbody>
+
     </table>
 </body>
 
