@@ -4,10 +4,12 @@ const app = express()
 app.set('view engine','hbs')
 
 var dsSV = [
-        {id:1, name : "Linh", age : 20, phone : '0901223333'},
-        {id:2, name : "Long", age : 23,phone : '0933533556'}
+        {id:100, name : "Linh", age : 20, phone : '0901223333'}, //index 0
+        {id:200, name : "Long", age : 23,phone : '0933533556'}, //index 1
+        {id:700, name : "Truong", age : 20,phone : '0933533557'}, //index 2
+        {id:400, name : "Minh", age : 19,phone : '0933533556'} // index 3
     ]
-
+// a , b ,x ,c ,d
 app.get('/',(req,res)=>{
     res.render('home',{danhSach : dsSV})
 })
@@ -17,7 +19,7 @@ app.get('/delete/:id',(req,res)=>{
     let index = dsSV.findIndex(item => item.id ==studentId)
     console.log(index)
     if(index !=-1){
-        dsSV = dsSV.slice(index,1)      
+        dsSV.splice(index,1)      
     }
     res.redirect('/')
 })
