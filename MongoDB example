@@ -1,0 +1,19 @@
+use FPIStudent
+
+db.sinhvien.insert({ten:"Quang Anh",tuoi: 28})
+db.sinhvien.insert({ten: "Thanh Do", tuoi :18,que : "Nghe An"})
+db.sinhvien.insert({ten:"Phuong",diem :{java: 8, Web:10}})
+
+db.sinhvien.insert({ 
+    name:"a",
+    ngaysinh: new Date("2016-02-19"),
+    nguoiThan: [{ bo: "Phong", tuoi: 40 }, { me: "Linh", score: 35 }]
+})
+
+db.sinhvien.updateOne({ten:"Quang Anh"},
+                        {$set : {tuoi :29 }})
+
+//tim sinh vien co tuoi >= 20
+db.sinhvien.find({tuoi : {$gte:20}})
+//tim sinh vien ten co chua "ng"
+db.sinhvien.find({ten:  /ng/i})
