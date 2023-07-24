@@ -7,4 +7,10 @@ async function getProducts() {
   return db.collection(collectionName).find().toArray();
 }
 
-module.exports = { getProducts };
+async function createProduct(item) {
+    const db = getDatabase();
+    const result = await db.collection(collectionName).insertOne(item);
+    return result;
+  }
+
+module.exports = { getProducts,createProduct };
