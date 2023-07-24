@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended:true}))
 
 app.post('/search',(req,res)=>{
     const name = req.body.searchName
-    const results = dsSV.filter(e => e.name.includes(name))
+    const results = dsSV.filter(e => e.name.toUpperCase().includes(name.toUpperCase()))
     res.render('home',{danhSach : results})
 })
 
