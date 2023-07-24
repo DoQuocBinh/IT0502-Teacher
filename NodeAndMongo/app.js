@@ -4,8 +4,14 @@ const app = express()
 app.set('view engine','hbs')
 app.use(express.json());
 
-app.get('/',(req,res)=>{
-    res.render('home')
+const { connectToDatabase } = require('./db');
+const { getProducts } = require('./product');
+
+connectToDatabase();
+
+app.get('/',async (req,res)=>{
+    const items = await getProducts();
+    res.render('home',{products:items})
 })
 
 const PORT = 3000
